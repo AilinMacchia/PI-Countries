@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { activities, Countries } = require("../db.js");
+const { Activities, Countries } = require("../db.js");
 const axios = require("axios");
 const router = Router();
 const { Op } = require("sequelize");
@@ -11,8 +11,8 @@ router.get("/", async function(req,res){
             return {
                 id: c.cca3,
                 name: c.name.common,
-                image: c.flags.png,
-                continent: c.continents[0],
+                image: c.flags[1],
+                continent: c.continents?c.continents[0]: "",
                 capital: c.capital ? c.capital[0] : "No tiene capital",
                 subregion: c.subregion,
                 area: c.area,
@@ -20,26 +20,30 @@ router.get("/", async function(req,res){
             };
         });
 
-    await Countries.bulkCreate(country);
+    await Countries.bulkCreate(country, {
+        ignoreDuplicates: true,
+    });
 
     let{name}=req.query;
-    if(name){
-        try{
-            let country = await Countries.findAll({
-                where:{
+    if (name) {
+        try {
+            const countryName = await Countries.findAll({
+                where: {
                     name: {
                         [Op.iLike]: `%${name}%`,
                     }
                 },
-                include:  [activities],
+                include: [Activities],
             })
-            if(country.length===0){
-                res.send("Pais no Encontrado")
-            }else{
-                res.send(country)
+
+            if (countryName.length === 0) {
+                res.status(404).send("No existe el pais.");
+               
+            } else {
+                res.send(countryName)
             }
-        }catch(e){
-            res.send(e)
+        } catch (error) {
+            res.send(error)
         }
     }else{
         try{
@@ -50,4 +54,20 @@ router.get("/", async function(req,res){
         }
     }
 
-})
+});
+
+router.get("/:id", async function(req, res){
+    const { id } = req.params;
+  
+    try {
+      let country = await Countries.findByPk(id.toUpperCase(), {
+        include: Activities
+      });
+      res.send(country);
+    } catch (error) {
+      res.send(error)
+    }
+  })
+
+
+module.exports= router
