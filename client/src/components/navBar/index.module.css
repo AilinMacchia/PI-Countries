@@ -1,0 +1,79 @@
+.navBar{
+    position: fixed;
+    width:100%;
+    left:0px;
+    padding-bottom: 6px;
+    background-color: rgba(165, 195, 206, 0.26);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    
+}
+
+.main{
+    font-size: 20px;
+    padding-left: 15px;
+    transition: 0.3s;
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.75) ;
+}
+
+.main:hover{
+    text-shadow: 3px 3px 5px rgb(0, 0, 0) ;
+    transform: scale(1.1);
+
+}
+
+
+.iconMain{
+    width: 39px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 5px;
+    margin-bottom: -2px;
+}
+
+.searchBar{
+    padding-top: 20px;
+}
+
+.ulNav{
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.75) ;
+    font-weight: bolder;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-left:50px ;
+    transition: 0.3s;
+    height: 20px;
+    width:fit-content;
+    cursor: pointer;
+    color: rgb(7, 7, 7);
+}
+
+.last{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.icon{
+    width: 39px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 32px;
+    margin-top: -1px;
+    margin-bottom: -2px;
+}
+
+.ulNav:hover{
+    text-shadow: 3px 3px 5px rgb(0, 0, 0) ;
+    transform: scale(1.1);
+
+}
+
+.cosas{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 100px;
+}

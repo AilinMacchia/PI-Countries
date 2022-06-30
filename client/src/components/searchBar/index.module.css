@@ -1,0 +1,37 @@
+.inputSearch{
+    background-color: rgba(255, 255, 255, 0);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid rgb(12, 12, 12) ;
+    padding-bottom: 5px;
+    padding-top: 8px;
+    color: rgb(3, 3, 3);
+}
+
+::placeholder { 
+    color: rgba(8, 8, 8, 0.699);
+
+}
+
+
+.bottonSearch{
+    position: absolute;
+    top: 28px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(12, 12, 12, 0.89);
+    border-radius: 5px;
+    padding: 2px;
+    padding-inline: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bottonSearch span{
+    font-size: 15px;
+}
+
+.bottonSearch:hover{
+    background-color: #6f91a0;
+}

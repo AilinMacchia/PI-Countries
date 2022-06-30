@@ -1,0 +1,50 @@
+.card{
+    background-color: rgba(100, 175, 152, 0.068);
+    backdrop-filter: blur(5px);
+    border-radius: 5%;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+    width:350px;
+    height: 350px;
+    text-decoration: none;
+    padding-top: 50px;
+    transition: 0.3s;
+  animation: ease-in;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px -5px;
+}
+
+
+.flag{
+    border-radius: 8px ;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.75) ;
+    margin: 0px;
+    width: 220px;
+    height:150px ;
+}
+
+a:link, a:visited,  a:hover, a:active
+{
+    color: #000000;
+    text-decoration: none;
+}
+.text{
+    color: rgb(233, 233, 233);
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.75) ;
+    justify-self: center;
+    
+}
+
+#titleName{
+    color:antiquewhite;
+    justify-self: center;
+}
