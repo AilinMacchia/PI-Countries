@@ -10,7 +10,8 @@
 }
 
 ::placeholder { 
-    color: rgba(8, 8, 8, 0.699);
+    color: black;
+    font-size: 16px;
 
 }
 
@@ -34,4 +35,9 @@
 
 .bottonSearch:hover{
     background-color: #6f91a0;
+}
+
+.text{
+    margin-bottom: -8px;
+    color: rgba(0, 0, 0, 0.466);
 }

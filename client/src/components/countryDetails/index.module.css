@@ -128,3 +128,8 @@ p{
 .text{
     cursor: pointer;
 }
+
+.move{
+    padding-left: 15px;
+    margin-top: 5px;
+}

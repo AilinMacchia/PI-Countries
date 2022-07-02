@@ -1,38 +1,43 @@
 import React, { useState, useEffect } from "react";
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { getByName, getAllCountries } from "../../Redux/actions/index";
 import s from "./index.module.css"
 
 export default function SearchBar() {
   const [Country , setCountry]= useState("");
   const dispatch= useDispatch()
+  const error= useSelector(state=>state.error)
+
   function Busqueda(pais){
     if(pais==="") {
       dispatch(getAllCountries())
+      dispatch(getByName(""))
     }else{
-      console.log("searchBar"+ pais)
       dispatch(getByName(pais))
     }  
   }
 
-  // useEffect((country) => {
-  //   dispatch(getByName(country))
-  // }, [dispatch])
+  useEffect((country) => {
+    dispatch(getByName(country))
+  },[dispatch])
   
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      Busqueda(Country)
-      setCountry("");
-    }}>
-      <input 
-        type="text"
-        className={s.inputSearch}
-        placeholder="Country..."
-        value={Country}
-        onChange={e=> setCountry(e.target.value)}
-      />
-      <input className={s.bottonSearch} type="submit" value="Search" />
-    </form>
+    <>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        Busqueda(Country)
+        setCountry("");
+      }}>
+        <input 
+          type="text"
+          className={s.inputSearch}
+          placeholder="Country..."
+          value={Country}
+          onChange={e=> setCountry(e.target.value)}
+        />
+        <input className={s.bottonSearch} type="submit" value="Search" />
+      </form>
+      {error && typeof error==="string"? <p className={s.text}>{error}</p>:null}
+    </>
   );
 }

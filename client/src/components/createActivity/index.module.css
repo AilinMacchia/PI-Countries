@@ -170,42 +170,28 @@
 }
 
 
-  .button {
-    position: relative;
-    width: 150px;
-    height: 50px;
-    background-color: #202231;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: width .5s,
-        border-radius .5s;
+.button{
+  display: inline-block;
+  color: rgb(253, 253, 253);
+  text-decoration: none;
+  padding: 10px 30px;
+  background-color: rgba(54, 54, 54, 0.226);
+  border: 3px solid 
+  #8672ce;
+  border-radius: 10px;
+  font-size: 15px;
 }
 
-.button * {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity .25s;
+.button:hover{
+  animation: pulsate 1s 
+  ease-in-out;
 }
 
-.image {
-    opacity: 0;
+@keyframes pulsate {
+  0%{
+      box-shadow: 
+      0 0 25px #5ddcff,
+      0 0 50px #4e00c2;
+  }
 }
 
-.button:focus {
-    width: 30px;
-    background-color:  #6f91a0;;
-    border-radius: 50%;
-}
-
-.button:focus .text {
-    opacity: 0;
-}
-
-.button:focus .image {
-    opacity: 1;
-    transition-delay: .5s;
-}

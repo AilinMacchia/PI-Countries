@@ -21,9 +21,9 @@ router.get("/", async function(req,res){
             };
         });
 
-    await Countries.bulkCreate(country, {
-        ignoreDuplicates: true,
-    });
+        await Countries.bulkCreate(country, {
+            ignoreDuplicates: true,
+        });
 
     let{name}=req.query;
     if (name) {
@@ -36,16 +36,12 @@ router.get("/", async function(req,res){
                 },
                 include: [Activities],
             })
-
-            if (countryName.length === 0) {
-                res.status(404).send("No existe el pais.");
-               
-            } else {
-                res.send(countryName)
+            console.log( "countryname "+ countryName)
+                res.status(200).send(countryName)
+                
+            } catch (error) {
+                res.send(error)
             }
-        } catch (error) {
-            res.send(error)
-        }
     }else{
         try{
             let countries = await Countries.findAll({include: Activities});

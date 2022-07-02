@@ -1,12 +1,11 @@
 const { Router } = require('express');
-const { Activities, Countries, Country_Activity } = require("../db.js");
+const { Activities, Countries } = require("../db.js");
 const router = Router();
 
 
 
 router.post('/', async function (req, res){
     const { name, difficulty, duration, season, countries } = req.body;
-
     try {
         let actividad = await Activities.create({
             name,
@@ -17,12 +16,10 @@ router.post('/', async function (req, res){
         const paisActividad = await Countries.findAll({
             where: { name: countries },
         });
-        
         actividad.addCountries(paisActividad);
-
         res.status(200).send('¡Se creo una actividad exitosamente!')
-    } catch (error) {
-        console.log(error)
+    }catch (e) {
+        console.log(e)
     }
 });
 

@@ -10,17 +10,16 @@ import Home from './components/home/index';
 
 const App = () => {
   return (
-
     <>
-    <Route path="/countries" component={NavBar} />
-    <Route exact path="/countries">
-      <Filters />
-      <Home/>
-    </Route>
-    <Route exact path="/countries/:id" component={countryDetails} />
-    <Route exact path="/activities" component={createActivity} />
-    <Route exact path="/" component={LandingPage} />
-  </>
+      <Route path="/countries" component={NavBar} />
+      <Route exact path="/countries">
+        <Filters />
+        <Home/>
+      </Route>
+      <Route exact path="/countries/:id" component={countryDetails} />
+      <Route exact path="/activities" component={createActivity} />
+      <Route exact path="/" component={LandingPage} />
+    </>
   )
 }
 

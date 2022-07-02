@@ -1,4 +1,4 @@
-import { GET_ALL,SET_LOADING, GET_BY_NAME, GET_COUNTRY, POST_ACTIVITY,GET_ACTIVITIES,SORT_POPULATION,SORT_ALPHABET,SORT_AREA,FILTER_CONTINENT,FILTER_ACTIVITIES} from '../actions/index'
+import { GET_ALL, GET_BY_NAME, GET_COUNTRY, POST_ACTIVITY,GET_ACTIVITIES,SORT_POPULATION,SORT_ALPHABET,SORT_AREA,FILTER_CONTINENT,FILTER_ACTIVITIES} from '../actions/index'
 
 
 const initialState = {
@@ -7,32 +7,32 @@ const initialState = {
     countryDetail: {},
     activities: [],
     filteredCountries: [],
-    loading: false
+    error:""
 }
 
 
 
 function rootReducer(state = initialState,action) {
     switch (action.type) {
-        case SET_LOADING:
-            return {
-            ...state,
-            loading:true
-        }
         case GET_ALL:
             return {
                 ...state,
                 countries: action.payload,
-                loading:false,
             }  
         case GET_BY_NAME:
-            console.log("reducer "+ action.payload)
-            return {
-                ...state,
-                countriesSearch: action.payload
-            }
+            if(action.payload.length===0){
+                return{
+                    ...state,
+                    error:"Country Not Found"
+                }
+            }else{
+                return {
+                    ...state,
+                    countriesSearch: action.payload,
+                    error:""
+                }  
+            }    
         case GET_COUNTRY:
-
             return {
                 ...state,
                 countryDetail: action.payload
@@ -46,7 +46,6 @@ function rootReducer(state = initialState,action) {
                 ...state,
                 activities: action.payload,
             }
-        
         case SORT_ALPHABET:
             let orderedAlphabet
             if(state.filteredCountries.length>0){
@@ -54,9 +53,8 @@ function rootReducer(state = initialState,action) {
             }else{
                 orderedAlphabet = [...state.countries]
             }
-            console.log(orderedAlphabet)
             if(action.payload==="A-Z"){
-                 orderedAlphabet = orderedAlphabet.sort((a, b) => {
+                orderedAlphabet = orderedAlphabet.sort((a, b) => {
                     if(a.name < b.name) {
                         return -1;
                     }
@@ -99,7 +97,7 @@ function rootReducer(state = initialState,action) {
                    }
                    return 0;
                })
-           }else if(action.payload==="ascendant"){
+            }else if(action.payload==="ascendant"){
                orderedPopulation = orderedPopulation.sort((a, b) => {
                    if(a.population < b.population) {
                        return 1;
@@ -109,16 +107,16 @@ function rootReducer(state = initialState,action) {
                    }
                    return 0;
                })
-           }else{
+            }else{
             orderedPopulation=[...state.countries]
-        }       
+            }       
                 return {
                     ...state,
                     filteredCountries: orderedPopulation,
                 }
         case FILTER_CONTINENT:
             let filteredContinent = [];
-            state.countries.map((c) => {
+            state.countries.forEach((c) => {
                 if(c.continent === action.payload) {
                     return filteredContinent.push(c)
                 }
@@ -129,12 +127,13 @@ function rootReducer(state = initialState,action) {
             }
         case FILTER_ACTIVITIES:
             let filteredActivities = [];
-            state.countries.map((country) => {
-                country.Activities.map((activity) => {
+            state.countries.forEach((country) => {
+                country.Activities.forEach((activity) => {
                     if(activity.name === action.payload) {
                         return filteredActivities.push(country);
                     }
                 })
+
             })
             return {
                 ...state,
@@ -159,7 +158,7 @@ function rootReducer(state = initialState,action) {
                    }
                    return 0;
                })
-           }else if(action.payload==="ascendant"){
+            }else if(action.payload==="ascendant"){
             ordenedArea = ordenedArea.sort((a, b) => {
                    if(a.area < b.area) {
                        return 1;
@@ -169,19 +168,17 @@ function rootReducer(state = initialState,action) {
                    }
                    return 0;
                })
-           }else{
-            ordenedArea=[...state.countries]
-        }    
-            return {
-                ...state,
-                filteredCountries: ordenedArea,
-            }
+            }else{
+                ordenedArea=[...state.countries]
+            }    
+                return {
+                    ...state,
+                    filteredCountries: ordenedArea,
+                }
         default: {
             return state
         }
     }
-
-
 }
 
 

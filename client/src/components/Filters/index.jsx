@@ -9,7 +9,6 @@ const Z_A = 'Z-A';
 
 
 const Filters = () => {
-
   let activities  = useSelector((state) => state.activities)
   const dispatch = useDispatch();
 
@@ -93,8 +92,8 @@ const Filters = () => {
             <option value="Oceania">Oceania</option>
           </select>
           <select name="activities" onChange={onSelectFilterChange}>
-            { arrayActivitiesNameFiltered.length > 0 ? (<option>Activities</option>) : (<option>No activities</option>)}
-            { arrayActivitiesNameFiltered.length > 0 &&
+            {arrayActivitiesNameFiltered.length > 0 ? (<option>Activities</option>) : (<option>No activities</option>)}
+            {arrayActivitiesNameFiltered.length > 0 &&
               arrayActivitiesNameFiltered.map((nameActivity, index) => {
                 return (
                   <option key={index} value={nameActivity}>{nameActivity}</option>
