@@ -14,7 +14,7 @@ export const DELETE_ACTIVITY= "DELETE_ACTIVITY"
 
 export function getAllCountries() {
   return dispatch =>{
-    axios.get("http://localhost:3001/countries/")   
+    axios.get("/countries")   
       .then(res => {
         dispatch({
           type: GET_ALL,
@@ -30,7 +30,7 @@ export function getAllCountries() {
 
 export function getByName(name) {
   return dispatch =>{
-    axios.get(`http://localhost:3001/countries?name=${name}`)
+    axios.get(`/countries?name=${name}`)
       .then(res => {
         dispatch({
           type: GET_BY_NAME,
@@ -45,7 +45,7 @@ export function getByName(name) {
 
 export function getCountry(id) {
   return dispatch =>{
-    axios.get(`http://localhost:3001/countries/${id}`)
+    axios.get(`/countries/${id}`)
       .then(res => {
         dispatch({
           type: GET_COUNTRY,
@@ -61,7 +61,7 @@ export function getCountry(id) {
 
 export const postActivity = (payload) => {
   return dispatch => {
-    axios.post(`http://localhost:3001/activities`, payload)
+    axios.post(`/activities`, payload)
       .then((res) => {
         dispatch({
           type: POST_ACTIVITY,
@@ -112,7 +112,7 @@ export function sortArea(type) {
 
 export function getActivities() {
   return function (dispatch) {
-    axios.get("http://localhost:3001/activities")
+    axios.get("/activities")
       .then((activities) => {
         dispatch(setActivities(activities.data));
       })
@@ -130,7 +130,7 @@ function setActivities(payload) {
 }
   
 export const deleteActivity = (name) => async dispatch => {
-  const res= await axios.delete(`http://localhost:3001/activities?name=${name}`)
+  const res= await axios.delete(`/activities?name=${name}`)
   dispatch({
     type:DELETE_ACTIVITY,
     payload:res.data,
