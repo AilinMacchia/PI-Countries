@@ -10,6 +10,7 @@ export const SORT_ALPHABET = 'SORT_ALPHABET';
 export const SORT_AREA = 'SORT_AREA';
 export const FILTER_CONTINENT = "FILTER_CONTINENT";
 export const FILTER_ACTIVITIES = "FILTER_ACTIVITIES";
+export const DELETE_ACTIVITY= "DELETE_ACTIVITY"
 
 export function getAllCountries() {
   return dispatch =>{
@@ -128,4 +129,12 @@ function setActivities(payload) {
   };
 }
   
-  
+export const deleteActivity = (name) => async dispatch => {
+  const res= await axios.delete(`http://localhost:3001/activities?name=${name}`)
+  dispatch({
+    type:DELETE_ACTIVITY,
+    payload:res.data,
+  })
+}
+
+

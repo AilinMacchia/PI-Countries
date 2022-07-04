@@ -37,7 +37,7 @@ router.get("/", async function(req,res){
                 include: [Activities],
             })
             console.log( "countryname "+ countryName)
-                res.status(200).send(countryName)
+               return res.status(200).send(countryName)
                 
             } catch (error) {
                 res.send(error)
@@ -45,7 +45,7 @@ router.get("/", async function(req,res){
     }else{
         try{
             let countries = await Countries.findAll({include: Activities});
-            res.send(countries);
+             return res.send(countries);
         }catch(e){
             res.send(e)
         }
@@ -60,7 +60,7 @@ router.get("/:id", async function(req, res){
       let country = await Countries.findByPk(id.toUpperCase(), {
         include: Activities
       });
-      res.send(country);
+      return res.send(country);
     } catch (error) {
       res.send(error)
     }

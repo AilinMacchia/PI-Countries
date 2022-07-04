@@ -17,7 +17,7 @@ router.post('/', async function (req, res){
             where: { name: countries },
         });
         actividad.addCountries(paisActividad);
-        res.status(200).send('¡Se creo una actividad exitosamente!')
+        res.status(200).send("Activity Created")
     }catch (e) {
         console.log(e)
     }
@@ -28,6 +28,23 @@ router.get("/", async function(req, res){
     res.status(200).send(activities);
 });
 
+
+router.delete("/", async function(req,res){
+    try{
+        const {name}= req.query;
+        if(!name){
+            const activities = await Activities.findAll();
+            return res.status(200).send(activities);
+        }if(!Activities){
+            return res.status(200).send("No se encontraron actividades")
+        }else{
+            const activity= await Activities.destroy({where:{name:[name]}})
+            return res.status(200).send("Activity Deleted")
+        }
+    }catch(e){
+        console.log(e)
+    }
+})
 module.exports=router
 
 

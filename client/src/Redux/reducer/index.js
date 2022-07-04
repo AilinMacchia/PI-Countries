@@ -1,4 +1,4 @@
-import { GET_ALL, GET_BY_NAME, GET_COUNTRY, POST_ACTIVITY,GET_ACTIVITIES,SORT_POPULATION,SORT_ALPHABET,SORT_AREA,FILTER_CONTINENT,FILTER_ACTIVITIES} from '../actions/index'
+import { GET_ALL, GET_BY_NAME, GET_COUNTRY, POST_ACTIVITY,GET_ACTIVITIES,DELETE_ACTIVITY,SORT_POPULATION,SORT_ALPHABET,SORT_AREA,FILTER_CONTINENT,FILTER_ACTIVITIES} from '../actions/index'
 
 
 const initialState = {
@@ -45,6 +45,11 @@ function rootReducer(state = initialState,action) {
             return {
                 ...state,
                 activities: action.payload,
+            }
+        case DELETE_ACTIVITY:
+            return{
+                ...state,
+                activities:state.activities.filter(a=>a.name !== action.payload)
             }
         case SORT_ALPHABET:
             let orderedAlphabet

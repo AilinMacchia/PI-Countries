@@ -7,6 +7,7 @@ import countryDetails from "./components/countryDetails/index";
 import createActivity from "./components/createActivity/index";
 import Filters from './components/Filters/index.jsx';
 import Home from './components/home/index';
+import Activities from "./components/activities/index.jsx"
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route exact path="/countries/:id" component={countryDetails} />
       <Route exact path="/activities" component={createActivity} />
       <Route exact path="/" component={LandingPage} />
+      <Route exact path="/activities/all" component={Activities} />
     </>
   )
 }

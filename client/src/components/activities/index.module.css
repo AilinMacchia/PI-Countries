@@ -1,0 +1,87 @@
+.background { 
+    opacity: 0.98;
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    left: 0px; 
+    top: 0px; 
+    z-index: -1;
+ }
+
+.stretch { 
+    width:100%; 
+    height:100%; 
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(54, 54, 54, 0.226);
+    backdrop-filter: blur(5px);
+    border-radius: 5%;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+    margin-top: 60px;
+    width: 600px;
+    height: 500px;
+}
+
+.a{
+    position: relative;
+    top: -280px;
+
+    color:white;
+    display: flex;
+    justify-content: center;
+}
+
+.lista{
+    margin-top: 10px;
+    font-size: 18px;
+    display: flex;
+    color: white;
+}
+
+.closeButton{
+    background: transparent;
+    border: none;
+    position: relative;
+    left: 200px;  
+}
+
+.puntitos{
+    list-style: none;
+    margin-top: -250px;
+}
+
+.button{
+    display: inline-block;
+    color: rgb(253, 253, 253);
+    text-decoration: none;
+    padding: 10px 30px;
+    background-color: rgba(54, 54, 54, 0.226);
+    border: 3px solid 
+    #8672ce;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+  
+  .button:hover{
+    animation: pulsate 1s 
+    ease-in-out;
+  }
+  
+  @keyframes pulsate {
+    0%{
+        box-shadow: 
+        0 0 25px #5ddcff,
+        0 0 50px #4e00c2;
+    }
+  }
+
+  .posicion{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-bottom: -50px;
+  }
