@@ -9,7 +9,7 @@
     color: rgb(3, 3, 3);
 }
 
-::placeholder { 
+.inputSearch::placeholder { 
     color: black;
     font-size: 16px;
 

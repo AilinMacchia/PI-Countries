@@ -29,7 +29,6 @@ export default function Home() {
             }
             return filtrados.slice(pageItems-1,pageItems+9)
         }else if((search.length>0)){
-            setCurrentPage(1)
             if(currentPage===1){
                 return search.slice(pageItems,pageItems+9)
             }

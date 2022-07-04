@@ -46,10 +46,6 @@
 
 }
 
-::placeholder{
-    color:rgba(184, 176, 176, 0.418)
-}
-
 .containerFilterSelect {
     width:25%;
     display: flex;
