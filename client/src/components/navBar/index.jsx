@@ -14,12 +14,13 @@ const NavBar = () => {
   
   const HandleDispatch=()=>{
     dispatch(getByName(""))
-    dispatch(getAllCountries())
+    
     dispatch(sortAlphabet(""))
     dispatch(sortArea(""))
     dispatch(sortPopulation(""))
     dispatch(filterActivities(""))
     dispatch(filterContinent(""))
+    dispatch(getAllCountries())
   }
 
   return (

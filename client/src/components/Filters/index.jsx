@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {sortPopulation, sortAlphabet, filterContinent, filterActivities, getActivities, sortArea} from "../../Redux/actions/index";
+import {sortPopulation, sortAlphabet, filterContinent, filterActivities, getActivities, sortArea, getAllCountries} from "../../Redux/actions/index";
 import s from "./index.module.css"
 const ASCENDANT = 'ascendant';
 const DESCENDANT = 'descendant';
@@ -30,16 +30,19 @@ const Filters = () => {
       dispatch(sortPopulation(e.target.value))
     }else if(e.target.value === 'Population'){
       dispatch(sortPopulation(""))
+      dispatch(getAllCountries())
     }
     else if (e.target.name === 'alphabet' && e.target.value !== 'Alphabet') {
       dispatch(sortAlphabet(e.target.value))
     }else if(e.target.value === 'Alphabet'){
       dispatch(sortAlphabet(""))
+      dispatch(getAllCountries())
     }
     else if(e.target.name==="area" && e.target.value !== "Area"){
       dispatch(sortArea(e.target.value))
     }else if(e.target.value === 'Area'){
       dispatch(sortArea(""))
+      dispatch(getAllCountries())
     }
   }
 
@@ -49,12 +52,14 @@ const Filters = () => {
       dispatch(filterContinent(e.target.value));
     }else if(e.target.value === 'Continents'){
       dispatch(filterContinent(""))
+      dispatch(getAllCountries())
     }
     else if(e.target.name === 'activities' && e.target.value !== 'Activities') {
       dispatch(filterActivities(e.target.value));
       dispatch(getActivities())
     }else if(e.target.value === 'Activities'){
       dispatch(filterActivities(""))
+      dispatch(getAllCountries())
     }
   }
 
