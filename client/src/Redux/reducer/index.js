@@ -18,6 +18,8 @@ function rootReducer(state = initialState,action) {
             return {
                 ...state,
                 countries: action.payload,
+                filteredCountries:[],
+                countriesSearch:[]
             }  
         case GET_BY_NAME:
             if(action.payload.length===0){

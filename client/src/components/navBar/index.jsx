@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {getByName, getAllCountries, sortAlphabet, sortArea, sortPopulation, filterActivities, filterContinent} from '../../Redux/actions';
+import { getAllCountries} from '../../Redux/actions';
 import { useDispatch} from "react-redux";
 import SearchBar from '../searchBar/index';
 import s from "./index.module.css"
@@ -13,13 +13,6 @@ const NavBar = () => {
   const dispatch = useDispatch()
   
   const HandleDispatch=()=>{
-    dispatch(getByName(""))
-    
-    dispatch(sortAlphabet(""))
-    dispatch(sortArea(""))
-    dispatch(sortPopulation(""))
-    dispatch(filterActivities(""))
-    dispatch(filterContinent(""))
     dispatch(getAllCountries())
   }
 
