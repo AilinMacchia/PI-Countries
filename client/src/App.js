@@ -14,7 +14,7 @@ const App = () => {
     <>
       <Route path="/countries" component={NavBar} />
       <Route exact path="/countries">
-        <Filters />
+        <Filters/>
         <Home/>
       </Route>
       <Route exact path="/countries/:id" component={countryDetails} />

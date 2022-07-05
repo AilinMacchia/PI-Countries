@@ -19,6 +19,8 @@ export default function Home() {
     useEffect(() => {
         dispatch(getAllCountries());
         dispatch(getByName(""))
+        setCurrentPage(1)
+        setPageItems(0)
     },[dispatch]);
 
 

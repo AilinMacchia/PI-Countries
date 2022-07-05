@@ -29,7 +29,8 @@ function rootReducer(state = initialState,action) {
                 return {
                     ...state,
                     countriesSearch: action.payload,
-                    error:""
+                    error:"",
+                    filteredCountries:[]
                 }  
             }    
         case GET_COUNTRY:
