@@ -18,14 +18,9 @@ let filter = activities.map((activity) => {
     return activity.name
 })
 
-let arrayActivitiesNameFiltered = filter.filter((name,index)=>{
-    return filter.indexOf(name) === index;
-})
-
-
 function handleDelete(e){
     dispatch(deleteActivity(e.target.value))
-    arrayActivitiesNameFiltered.filter(g=> g !== e.target.value)
+    filter.filter(g=> g !== e.target.value)
     window.location.reload()
 }
 
@@ -35,30 +30,28 @@ const HandleDispatch=()=>{
 }
 
 return(
-    <div>
-        <div className={s.background}> 
+  <div>
+    <div className={s.background}> 
       <img src={image} className={s.stretch} alt="" />  
     </div>
     <div className={s.posicion}>
       <Link to="/countries"  onClick={()=> HandleDispatch()}><button className={s.button}>Go Home</button></Link>
     </div>
     <div className={s.container}>
-        {arrayActivitiesNameFiltered.length > 0 ? <h3 className={s.a}>Activities</h3> : <h3 className={s.a}>No Activities Found</h3>}
+      {filter.length > 0 ? <h3 className={s.a}>Activities</h3> : <h3 className={s.a}>No Activities Found</h3>}
         <ul className={s.puntitos}>
-            {arrayActivitiesNameFiltered.length > 0 &&
-              arrayActivitiesNameFiltered.map((nameActivity, index) => {
-                return (
-                    <li key={index} className={s.lista} >
-                        {nameActivity}<button className={s.closeButton} value={nameActivity} onClick={(e)=> handleDelete(e)}>❌</button>
-                    </li> 
-                )
-              })
-            }
+          {filter.length > 0 &&
+            filter.map((nameActivity) => {
+              return (
+                <li key={nameActivity} className={s.lista} >
+                  {nameActivity}<button className={s.closeButton} value={nameActivity} onClick={(e)=> handleDelete(e)}>❌</button>
+                </li> 
+              )
+            })
+          }
         </ul>
     </div>
-            
-        
-    </div>
+  </div>
 )
 }
 

@@ -20,10 +20,6 @@ const Filters = () => {
     return activity.name
   })
 
-  let arrayActivitiesNameFiltered = filter.filter((name,index)=>{
-    return filter.indexOf(name) === index;
-  })
-
   function onSelectSortChange(e) {
     e.preventDefault();
     if (e.target.name === 'population' && e.target.value !== 'Population') {
@@ -97,11 +93,11 @@ const Filters = () => {
             <option value="Oceania">Oceania</option>
           </select>
           <select name="activities" onChange={onSelectFilterChange}>
-            {arrayActivitiesNameFiltered.length > 0 ? (<option>Activities</option>) : (<option>No activities</option>)}
-            {arrayActivitiesNameFiltered.length > 0 &&
-              arrayActivitiesNameFiltered.map((nameActivity, index) => {
+            {filter.length > 0 ? (<option>Activities</option>) : (<option>No activities</option>)}
+            {filter.length > 0 &&
+              filter.map((nameActivity) => {
                 return (
-                  <option key={index} value={nameActivity}>{nameActivity}</option>
+                  <option key={nameActivity} value={nameActivity}>{nameActivity}</option>
                 )
               })
             }
