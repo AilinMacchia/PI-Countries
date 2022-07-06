@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import {useDispatch, useSelector} from "react-redux"
 import { getByName, getAllCountries } from "../../Redux/actions/index";
 import s from "./index.module.css"
@@ -16,10 +16,6 @@ export default function SearchBar() {
       dispatch(getByName(pais))
     }  
   }
-
-  // useEffect((country) => {
-  //   dispatch(getByName(country))
-  // },[dispatch])
   
   return (
     <>
