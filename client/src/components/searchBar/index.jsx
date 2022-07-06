@@ -17,9 +17,9 @@ export default function SearchBar() {
     }  
   }
 
-  useEffect((country) => {
-    dispatch(getByName(country))
-  },[dispatch])
+  // useEffect((country) => {
+  //   dispatch(getByName(country))
+  // },[dispatch])
   
   return (
     <>
