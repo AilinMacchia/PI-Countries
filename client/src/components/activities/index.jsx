@@ -14,13 +14,13 @@ useEffect(() => {
   dispatch(getActivities())
 }, [dispatch])
 
-let filter = activities.map((activity) => {
+let actividadesFiltradas = activities.map((activity) => {
     return activity.name
 })
 
 function handleDelete(e){
     dispatch(deleteActivity(e.target.value))
-    filter.filter(g=> g !== e.target.value)
+    actividadesFiltradas.filter(g=> g !== e.target.value)
     window.location.reload()
 }
 
@@ -38,10 +38,10 @@ return(
       <Link to="/countries"  onClick={()=> HandleDispatch()}><button className={s.button}>Go Home</button></Link>
     </div>
     <div className={s.container}>
-      {filter.length > 0 ? <h3 className={s.a}>Activities</h3> : <h3 className={s.a}>No Activities Found</h3>}
+      {actividadesFiltradas.length > 0 ? <h3 className={s.a}>Activities</h3> : <h3 className={s.a}>No Activities Found</h3>}
         <ul className={s.puntitos}>
-          {filter.length > 0 &&
-            filter.map((nameActivity) => {
+          {actividadesFiltradas.length > 0 &&
+            actividadesFiltradas.map((nameActivity) => {
               return (
                 <li key={nameActivity} className={s.lista} >
                   {nameActivity}<button className={s.closeButton} value={nameActivity} onClick={(e)=> handleDelete(e)}>❌</button>
